@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  background: radial-gradient(#545B77 40%, #374259);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+

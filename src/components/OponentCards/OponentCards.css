@@ -1,0 +1,23 @@
+/* 
+#18122B
+#393053
+#443C68
+#635985
+#EEEEEE 
+*/
+
+.oponentCard-container h1 {
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  color: #dbd1fd;
+  font-weight: normal;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.oponentCard-container ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}

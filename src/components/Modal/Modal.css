@@ -1,0 +1,77 @@
+/* 
+#18122B
+#393053
+#443C68
+#635985
+#EEEEEE 
+*/
+
+.modalContainer {
+  background: rgba(0, 0, 0, 0.623);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modalContainer > div {
+  background: #393053;
+  border: 2px solid #635985;
+  border-radius: .5rem;
+  max-width: 25rem;
+  padding: 2rem 1.5rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.modalContainer > div > h1 {
+  color: #EEEEEE;
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+}
+.modalContainer > div > p {
+  color: #a1a1a1;
+  font-size: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.modalContainer > div > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+}
+
+.modalContainer > div > span p {
+  padding: .6rem 2rem;
+  background: #5cf0d9;
+  outline: 2px solid #068874;
+  color: #18122B;
+  font-weight: bold;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: ease .3s;
+}
+
+.modalContainer > div > span p:hover {
+  background: #8bf8e8;
+  scale: 1.05;
+}
+
+.modalContainer > div > span p:active {
+  scale: 1;
+}
+
+.modalContainer > div > span p:last-child {
+  background: #FF6347;
+  outline: 2px solid #aa0909;
+}
+
+.modalContainer > div > span p:last-child:hover {
+  background: #fa735b;
+}
