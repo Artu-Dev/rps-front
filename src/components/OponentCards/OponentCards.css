@@ -20,4 +20,6 @@
   list-style: none;
   display: flex;
   justify-content: space-evenly;
+  max-width: 700px;
+  margin: 0 auto;
 }

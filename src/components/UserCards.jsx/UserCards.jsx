@@ -1,10 +1,10 @@
 import { socket } from "../../socket";
+import AdminActions from "../AdminActions/AdminActions";
 import { Card } from "../Card/Card";
-import "./Cards.css";
+import "./UserCards.css";
 
 export const UserCards = ({cards}) => {
-  function hanleCardClick(index) {
-    console.log(index);
+  function hanleCardClick(index,) {
     socket.emit("selectCard", index);
   }
 
@@ -24,6 +24,8 @@ export const UserCards = ({cards}) => {
           </li>
         ))}
       </ul>
+
+      <AdminActions />
     </div>
   );
 }

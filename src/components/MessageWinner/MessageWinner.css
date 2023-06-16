@@ -1,0 +1,28 @@
+.messageWinner-content {
+   text-shadow: none;
+   position: absolute;
+   background: rgba(0, 0, 0, 0.356);
+   display: grid;
+   place-items: center;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   z-index: 999;
+}
+
+.messageWinner-content p {
+   background: #ee2b2b;
+   font-size: 2rem;
+   padding: 1rem 3rem;
+   border-radius: .5rem;
+}
+
+.messageWinner-content p.empate {
+   background: yellow;
+}
+.messageWinner-content p.usuario {
+   background: #00ff88;
+}
+.messageWinner-content p.oponente {
+   background: #0066ff;
+}

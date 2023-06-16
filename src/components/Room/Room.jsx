@@ -1,25 +1,22 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
-import {VscDebugStart, VscDebugRestart} from "react-icons/vsc";
-
-import { socket } from '../../socket'; 
+import copy from "clipboard-copy";
 
 import "./Room.css";
+
+import { socket } from '../../socket'; 
 import { UserCards } from '../UserCards.jsx/UserCards';
 import { OponentCards } from '../OponentCards/OponentCards';
-import { RoomCards } from '../RoomCards/RoomCards';
-import { Modal } from '../Modal/Modal';
+import { MessageWinner } from '../MessageWinner/MessageWinner';
+import AlertMsg from '../AlertMsg/AlertMsg';
 
-export default function Room({roomCode, usersOnline, cards, roomPointsInfo}) {
-  const [loading, setLoading] = useState(false);
-  const [modalDecision, setModalDecision] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [playResult, setPlayResult] = useState();
-
-  const userRedux = useSelector(state => state.user);
+export default function Room({roomCode, usersOnline, cards, roomPointsInfo, oponentCards}) {
+  const [playResult, setPlayResult] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [msgType, setMsgType] = useState("ok");
   
+  const userRedux = useSelector(state => state.user);
   const roomPoints = roomPointsInfo.points;
-
   
   useEffect(() => {
     if (roomPointsInfo.winner === "empate") {
@@ -28,32 +25,36 @@ export default function Room({roomCode, usersOnline, cards, roomPointsInfo}) {
       setPlayResult("Ganhou!!");
     } else if(roomPointsInfo.winner === "oponente" && !userRedux.isAdmin) {
       setPlayResult("Ganhou!!")
+    } else if(!roomPointsInfo.winner){
+      setPlayResult(null);
     } else {
+      roomPointsInfo.winner
       setPlayResult("Perdeu!!");
     }
-    
-
+    setTimeout(() => {
+      setPlayResult(null)
+    }, 3000);
   }, [roomPointsInfo])
 
-  function handleClick(emit, timeout = 1000) {
-    setLoading(true);
-    setShowModal(false)
-    socket.timeout(timeout).emit(emit, () => setLoading(false));
+  console.log(playResult);
+
+  function handleClikCode() {
+    if(message) return false;
+    copy(roomCode || userRedux.roomCode);
+    setMessage("💃 Código da sala copiado com sucesso! 🎉");
+    setTimeout(() => {
+      setMessage(null);
+    }, 3500);
   }
 
-
   return (
-    <div>
-      {showModal && (
-        <Modal
-          onAccept={() => handleClick("reset")}
-          onDecline={() => setShowModal(false)}
-          title="Tem certeza que deseja resetar a sala? 🔄"
-          message="Essa ação irá apagar toda a pontuação da sala! 😱"
-          accept="Claro, bora recomeçar! 👍"
-          decline="Oops, melhor não! 😅"
+    <div className="roomContainer">
+      {message &&
+        <AlertMsg 
+          message={message}
+          type={msgType}
         />
-      )}
+      }
 
       <div className="players-list">
         <h2>Jogadores:</h2>
@@ -70,43 +71,29 @@ export default function Room({roomCode, usersOnline, cards, roomPointsInfo}) {
             </li>
           ))}
         </ul>
-      </div>
-
-      <OponentCards cards={cards} />
-      <RoomCards />
-      {roomPointsInfo.winner && (
-        <p className="winnerContainer">
-          <span>
-            {playResult}
-          </span>
-        </p>
-      )}
-      <UserCards cards={cards} />
-
-
-      {userRedux.isAdmin && (
-        <div className="admin-actions">
-          <button onClick={() => handleClick("start")} disabled={loading}>
-            Start{" "}
-            <i>
-              <VscDebugStart />
-            </i>
-          </button>
-          <button onClick={() => handleClick("finish_game")} disabled={loading}>
-            Result
-          </button>
-          <button onClick={() => setShowModal(true)} disabled={loading}>
-            reset{" "}
-            <i>
-              <VscDebugRestart />
-            </i>
-          </button>
+        <div className="room-code" onClick={handleClikCode}>
+          Codigo da sala:
+          <span>{roomCode || userRedux.roomCode}</span>
         </div>
-      )}
-      <div className="room-code">
-        Codigo da sala:
-        <span>{roomCode || userRedux.roomCode}</span>
       </div>
+
+      <section className="gameContainer">
+        <OponentCards cards={oponentCards} />
+        {roomPointsInfo.winner && ( 
+          <MessageWinner 
+            playResult={playResult}
+            classe={roomPointsInfo.winner} 
+          />
+        )}
+        <UserCards 
+          cards={cards}
+        /> 
+      </section>
+
+
+      <MessageWinner  
+        playResult={playResult}
+      />
     </div>
   );
 }

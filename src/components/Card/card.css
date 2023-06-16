@@ -11,6 +11,7 @@
   outline-offset: -.9rem;
   transition: ease .3s;
   position: relative;
+  text-shadow: none;
 }
 
 .card-content:hover {
@@ -47,4 +48,23 @@
   color: #b5a8df;
   transition: ease .3s;
   position: absolute;
+}
+
+@media screen and (max-width: 650px) {
+  .card-content {
+    height: 11rem;
+    width: 6rem;
+  }
+  
+  .card-content i {
+    font-size: 2.6rem;
+  }
+  
+  .card-content.back {
+    height: 9rem;
+    width: 5rem;
+  }
+  .card-content.back p {
+    font-size: 1.5rem;
+  }
 }

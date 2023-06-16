@@ -8,17 +8,19 @@
 
 .modalContainer {
   background: rgba(0, 0, 0, 0.623);
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   top: 0;
-  position: absolute;
+  left: 0;
+  position: fixed;
   display: grid;
   place-items: center;
   z-index: 999;
+  text-shadow: none;
 }
 
 .modalContainer > div {
-  background: #393053;
+  background: #3a2e5f;
   border: 2px solid #635985;
   border-radius: .5rem;
   max-width: 25rem;
@@ -31,9 +33,11 @@
   color: #EEEEEE;
   font-size: 2.5rem;
   padding-bottom: 1rem;
+  text-shadow: 2px 3px #18122B;
 }
 .modalContainer > div > p {
   color: #a1a1a1;
+  text-shadow: 1px 2px #18122B;
   font-size: 1rem;
   padding-bottom: 1.5rem;
 }
@@ -48,18 +52,22 @@
 
 .modalContainer > div > span p {
   padding: .6rem 2rem;
-  background: #5cf0d9;
-  outline: 2px solid #068874;
+  width: 100%;
   color: #18122B;
+  background-color: #0ca747;
+  border: 2px solid #165028;
   font-weight: bold;
-  border-radius: 2rem;
   cursor: pointer;
-  box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.1);
+  text-shadow: none;
   transition: ease .3s;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .modalContainer > div > span p:hover {
-  background: #8bf8e8;
   scale: 1.05;
 }
 
@@ -68,10 +76,16 @@
 }
 
 .modalContainer > div > span p:last-child {
-  background: #FF6347;
-  outline: 2px solid #aa0909;
+  background: #fc4a1a;
+  border: 2px solid #aa0909;
 }
 
 .modalContainer > div > span p:last-child:hover {
-  background: #fa735b;
+  background: #f05d34;
+}
+
+.modalContainer > div > span p:hover {
+  background-color: #20c760;
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
 }

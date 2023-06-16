@@ -2,27 +2,30 @@
   position: relative;
 }
 .roomCards-container > div {
-  height: 11rem;
-  padding: 1rem 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .roomCards-container h2 {
   color: #dddddc;
   font-weight: normal;
   font-size: 1rem;
-  position: absolute;
-  bottom: -3rem;
-  left: 2rem;
+  text-align: center;
 }
 
 .roomCards-container > div .card-content {
-  position: absolute;
   box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.1);
 }
 .roomCards-container > div .card-content:first-child {
+  position: absolute;
   translate: -1rem -.4rem;
 }
 .roomCards-container > div .card-content:last-child {
+  position: absolute;
   translate: 1rem .4rem;
 }
 

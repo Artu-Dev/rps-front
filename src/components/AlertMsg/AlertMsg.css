@@ -1,0 +1,27 @@
+.alertMsg {
+	position: fixed;
+	left: 50%;
+	top: 5rem;
+	transform: translateX(-50%);
+	background: #339900;
+	border: 2px solid #47f312;
+	color: #000000;
+	text-shadow: none;
+	border-radius: .5rem;
+	padding: .5rem 2.5rem;
+	font-size: 1.1rem;
+	font-weight: bold;
+	text-transform: capitalize;
+	box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.247);
+	z-index: 99;
+	animation: fadeout 3s ease-in forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
