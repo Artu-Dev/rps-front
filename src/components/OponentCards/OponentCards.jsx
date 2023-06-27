@@ -8,12 +8,13 @@ export const OponentCards = ({cards}) => {
     cardElements.push(i)
   }
 
-  console.log(cards); 
-
   return (
     <div className="oponentCard-container">
       <h1>CARTAS ADVERSÁRIAS</h1>
       <ul>
+        {!cards &&
+          <li className="no-cards">Sem Cartas</li>
+        }
         {cardElements.map((card, index) => (
           <li className="oponentCard" key={index}>
             <Card isFront={false} />

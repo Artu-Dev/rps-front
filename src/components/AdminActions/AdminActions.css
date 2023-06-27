@@ -27,8 +27,12 @@
    color: #27f182;
 }
 
+.admin-actions .result-btn:hover {
+   color: #6ea6fa;
+}
+
 .admin-actions button:last-child:hover {
-   color: #f12774;
+   color: #e5e904;
 }
 
 .admin-actions button i {
@@ -45,4 +49,17 @@
 .admin-actions button:disabled:hover {
    scale: 1;
    color: #2c0707;
+}
+@media (max-width: 650px) {
+   .admin-actions {
+      padding: 1rem 0;
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+   }
+   .admin-actions button {
+      font-size: 1.1rem;
+      padding: 0rem 1rem;
+   }
+   
 }

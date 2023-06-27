@@ -38,6 +38,7 @@ const AdminActions = () => {
                </i>
             </button>
             <button
+               className="result-btn"
                onClick={() => handleClick("finish_game")}
                disabled={loading}
             >

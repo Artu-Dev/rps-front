@@ -15,6 +15,11 @@ export const slice = createSlice({
         roomCode: payload.roomCode
       }
     },
+    changeRoomCode(state, {payload}) {
+      return {...state,
+        roomCode: payload
+      }
+    },
     logout(state) {
       return {...state,
         username: "",
@@ -25,7 +30,7 @@ export const slice = createSlice({
   }
 });
 
-export const {changeUserDatas, logout} = slice.actions;
+export const {changeUserDatas, changeRoomCode, logout} = slice.actions;
 
 export const selectUsername = state => state.username;
 export const selectIsAdmin = state => state.isAdmin;

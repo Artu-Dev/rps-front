@@ -1,9 +1,13 @@
 import "./AlertMsg.css";
 
-export default function AlertMsg({message, type}) {
+export default function AlertMsg({message, type, time = 3}) {
 	return(
-		<span className={`alertMsg ${type}`}>
-			{message}
-		</span>
+		<div className={`alertMsg ${type}`} style={{
+			animation: `fadeout ${time}s ease-in forwards`
+		}}>
+			<div className="alertMsg-textContainer">
+				{message}
+			</div>
+		</div>
 	)
 }

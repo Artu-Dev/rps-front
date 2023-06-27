@@ -1,28 +1,73 @@
 .messageWinner-content {
    text-shadow: none;
-   position: absolute;
-   background: rgba(0, 0, 0, 0.356);
-   display: grid;
-   place-items: center;
+   position: fixed;
+   background: rgba(0, 0, 0, 0.7);
    height: 100%;
    width: 100%;
    top: 0;
+   left: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
    z-index: 999;
 }
 
+.messageWinner-content::after {
+   content: "";
+   height: .5rem;
+   width: 100%;
+   background: #EEEEEE;
+   position: fixed;
+   top: 0;
+   left: 0;
+   animation: close-bar 3s linear forwards;
+}
+
 .messageWinner-content p {
-   background: #ee2b2b;
    font-size: 2rem;
-   padding: 1rem 3rem;
+   padding: 1rem 4rem;
    border-radius: .5rem;
+   color: #18122B;
+   font-weight: bold;
 }
 
 .messageWinner-content p.empate {
-   background: yellow;
+   background: #f3f03f;
+   border-bottom: 4px solid #e27a3e;
 }
-.messageWinner-content p.usuario {
-   background: #00ff88;
+.messageWinner-content p.you {
+   background: #14e252;
+   border-bottom: 4px solid #037003;
 }
 .messageWinner-content p.oponente {
-   background: #0066ff;
+   background: #f84526;
+   border-bottom: 4px solid #fd9550;
+   color: #EEEEEE;
+   text-shadow: 2px 2px black;
+}
+
+.cardsResult-container {
+   display: flex;
+   gap: 3rem;
+}
+
+.cardsResult-container span h1 {
+   padding-bottom: 1rem;
+   color: #EEEEEE;
+   text-shadow: 1px 2px black;
+   font-weight: normal;
+   text-align: center;
+   text-transform: capitalize;
+}
+
+.cardsResult-container span:first-child h1 {
+   color: #f84b8e;
+}
+
+
+@keyframes close-bar {
+   from {width: 100%;}
+   to {width: 0%;}
 }

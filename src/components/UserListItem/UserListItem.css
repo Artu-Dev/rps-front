@@ -1,0 +1,33 @@
+.playerItem {
+  color: #a5aed2;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  padding: .4rem 0rem;
+}
+
+.playerItem:first-child .username {
+  
+}
+
+.playerItem .username {
+  position: relative;
+  margin-right: 3rem;
+}
+
+.playerItem:first-child .username::after {
+  content: "👑";
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.playerItem .username.AlreadyPlayed::before {
+  content: "✔️";
+  position: absolute;
+  right: -1.5rem;
+  font-size: 1rem;
+}
+
+.playerItem:has(.you) {
+  color: #ec5e94;
+}
